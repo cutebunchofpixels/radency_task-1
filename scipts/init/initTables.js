@@ -1,5 +1,6 @@
 import Note from "../../models/Note.js";
-import renderNotesTable from "../../scipts/NotesTable/renderNotesTable.js";
+import renderNotesTable from "../NotesTable/renderNotesTable.js";
+import renderNewNotesForm from "../NewNoteForm/renderNewNoteForm.js";
 
 let initialId = 1;
 
@@ -27,6 +28,10 @@ export function updateTables() {
 export function setViewvingArchived(value) {
     isViewvingArchived = value;
     updateNotesTable();
+}
+
+export function updateNewNoteForm() {
+    renderNewNotesForm("new-note-form", notes);
 }
 
 let isViewvingArchived = false;

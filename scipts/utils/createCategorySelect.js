@@ -1,8 +1,18 @@
 import { categories } from "../init/initTables.js";
 
-export default function createCategorySelect(note) {
+export default function createCategorySelect(note, placeholder) {
     const select = document.createElement("select");
     select.classList.add("form-select");
+
+    if (placeholder) {
+        const placeholderOption = document.createElement("option");
+        placeholderOption.value = "";
+        placeholderOption.disabled = true;
+        placeholderOption.selected = true;
+        placeholderOption.innerText = placeholder;
+
+        select.append(placeholderOption);
+    }
 
     for (let category of categories) {
         const option = document.createElement("option");
