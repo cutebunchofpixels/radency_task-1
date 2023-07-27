@@ -33,7 +33,8 @@ export function handleSubmitEditForm(e, oldNote, notes) {
             form.noteName.value,
             oldNote.creationDate,
             form.category.value,
-            form.content.value
+            form.content.value,
+            oldNote.isArchived
         );
 
         const newNotes = notes.map((note) => {

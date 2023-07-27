@@ -12,10 +12,9 @@ export function handleArchiveNote(noteId, notes) {
             note.name,
             note.creationDate,
             note.category,
-            note.content
+            note.content,
+            !note.isArchived
         );
-
-        newNote.isArchived = true;
 
         return newNote;
     });
@@ -30,10 +29,9 @@ export function handleArchiveAllNotes(notes) {
             note.name,
             note.creationDate,
             note.category,
-            note.content
+            note.content,
+            !note.isArchived
         );
-
-        newNote.isArchived = true;
 
         return newNote;
     });
