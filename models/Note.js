@@ -1,4 +1,5 @@
 import { validateModel, getInvalidFiels } from "./validationUtils.js";
+import { categories } from "../scipts/init/initTables.js";
 
 export default class Note {
     constructor(id, name, creationDate, category, content) {
@@ -20,7 +21,7 @@ export default class Note {
     #validationSchema = {
         name: (value) => /.+/.test(value),
         creationDate: (value) => value instanceof Date && value <= Date.now(),
-        category: (value) => /^(Task|Idea|Random Thought)$/.test(value),
+        category: (value) => categories.includes(value),
         content: (value) => /.+/.test(value),
         isArchived: (value) => typeof value === "boolean",
         dates: (value) =>

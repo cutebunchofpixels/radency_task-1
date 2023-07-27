@@ -4,6 +4,7 @@ import renderNotesTable from "../../scipts/NotesTable/renderNotesTable.js";
 let initialId = 1;
 
 export const notesTableId = "notes-table";
+export const categories = ["Task", "Idea", "Random Thought"];
 
 export function setNotes(newNotes) {
     notes = newNotes;

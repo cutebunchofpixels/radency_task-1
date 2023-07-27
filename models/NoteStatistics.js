@@ -1,3 +1,5 @@
+import { categories } from "../scipts/init/initTables.js";
+
 export default class NotesStatistics {
     constructor(category, amountActive, amountArchived) {
         this.category = category;
@@ -21,7 +23,7 @@ export default class NotesStatistics {
     }
 
     #validationSchema = {
-        category: (value) => /^(Task|Idea|Random Thought)$/.test(value),
+        category: (value) => categories.includes(value),
         amountActive: (value) => Number.isInteger(value) && value > 0,
         amountArchived: (value) => Number.isInteger(value) && value > 0,
     };
