@@ -1,8 +1,8 @@
-import NotesStatistics from "./NoteStatistics.js";
 import { validateModel, getInvalidFiels } from "./validationUtils.js";
 
 export default class Note {
-    constructor(name, creationDate, category, content) {
+    constructor(id, name, creationDate, category, content) {
+        this.id = id;
         this.name = name;
         this.creationDate = creationDate;
         this.category = category;
