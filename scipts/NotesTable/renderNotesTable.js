@@ -1,6 +1,5 @@
 import createNotesTableHeading from "./createNotesTableHeading.js";
 import createNotesTableContent from "./createNotesTableContent.js";
-import Note from "../../models/Note.js";
 
 export default function renderNotesTable(parentId, tableId, notes) {
     const parent = document.querySelector(`#${parentId}`);
@@ -12,7 +11,7 @@ export default function renderNotesTable(parentId, tableId, notes) {
     newTable.id = tableId;
     newTable.classList.add("table", "table-hover");
 
-    const heading = createNotesTableHeading();
+    const heading = createNotesTableHeading(notes);
     const body = createNotesTableContent(notes);
 
     newTable.append(heading, body);

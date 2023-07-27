@@ -1,17 +1,19 @@
 import createIcon from "../utils/createIcon.js";
+import { handleArchiveNote } from "./handlers/archiveNotes.js";
 
 export default function createNotesTableContent(notes) {
     const body = document.createElement("tbody");
+    const activeNotes = notes.filter((note) => !note.isArchived);
 
-    for (const note of notes) {
-        const row = createNotesTableRow(note);
+    for (const note of activeNotes) {
+        const row = createNotesTableRow(note, notes);
         body.append(row);
     }
 
     return body;
 }
 
-function createNotesTableRow(note) {
+function createNotesTableRow(note, notes) {
     const row = document.createElement("tr");
 
     const name = document.createElement("td");
@@ -38,13 +40,13 @@ function createNotesTableRow(note) {
     dates.innerText = note.dates.join(", ");
     row.append(dates);
 
-    const actions = createActionsCell();
+    const actions = createActionsCell(note, notes);
     row.append(actions);
 
     return row;
 }
 
-function createActionsCell(note) {
+function createActionsCell(note, notes) {
     const tableData = document.createElement("td");
 
     const actionsWrapper = document.createElement("div");
@@ -56,6 +58,9 @@ function createActionsCell(note) {
 
     const archiveButton = document.createElement("button");
     archiveButton.classList.add("btn", "btn-outline-primary");
+    archiveButton.addEventListener("click", () =>
+        handleArchiveNote(note.id, notes)
+    );
     archiveButton.append(createIcon("bi", "bi-archive"));
 
     const removeButton = document.createElement("button");
