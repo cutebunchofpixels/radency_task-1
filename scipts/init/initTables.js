@@ -12,13 +12,24 @@ export function setNotes(newNotes) {
 }
 
 export function updateNotesTable() {
-    renderNotesTable("notes-table-container", "notes-table", notes);
+    renderNotesTable(
+        "notes-table-navigation",
+        "notes-table",
+        notes,
+        isViewvingArchived
+    );
 }
 
 export function updateTables() {
     updateNotesTable();
 }
 
+export function setViewvingArchived(value) {
+    isViewvingArchived = value;
+    updateNotesTable();
+}
+
+let isViewvingArchived = false;
 let notes = [
     new Note(
         initialId++,

@@ -3,11 +3,17 @@ import { handleArchiveNote } from "./handlers/archiveNotes.js";
 import { handleEditClick } from "./handlers/editNote.js";
 import { handleRemoveNote } from "./handlers/removeNotes.js";
 
-export default function createNotesTableContent(notes) {
+export default function createNotesTableContent(notes, isViewvingArchived) {
     const body = document.createElement("tbody");
-    const activeNotes = notes.filter((note) => !note.isArchived);
 
-    for (const note of activeNotes) {
+    let visibleNotes;
+    if (isViewvingArchived) {
+        visibleNotes = notes.filter((note) => note.isArchived);
+    } else {
+        visibleNotes = notes.filter((note) => !note.isArchived);
+    }
+
+    for (const note of visibleNotes) {
         const row = createNotesTableRow(note, notes);
         body.append(row);
     }
