@@ -1,5 +1,6 @@
 import createIcon from "../utils/createIcon.js";
 import { handleArchiveNote } from "./handlers/archiveNotes.js";
+import { handleEditClick } from "./handlers/editNote.js";
 import { handleRemoveNote } from "./handlers/removeNotes.js";
 
 export default function createNotesTableContent(notes) {
@@ -55,6 +56,10 @@ function createActionsCell(note, notes) {
 
     const editButton = document.createElement("button");
     editButton.classList.add("btn", "btn-outline-primary");
+    editButton.addEventListener("click", (e) =>
+        handleEditClick(e, note, notes)
+    );
+    editButton.setAttribute("data-edit-note-button", "");
     editButton.append(createIcon("bi", "bi-pencil"));
 
     const archiveButton = document.createElement("button");

@@ -3,13 +3,19 @@ import renderNotesTable from "../../scipts/NotesTable/renderNotesTable.js";
 
 let initialId = 1;
 
+export const notesTableId = "notes-table";
+
 export function setNotes(newNotes) {
     notes = newNotes;
-    updateTables();
+    updateNotesTable();
+}
+
+export function updateNotesTable() {
+    renderNotesTable("notes-table-container", "notes-table", notes);
 }
 
 export function updateTables() {
-    renderNotesTable("notes-table-container", "notes-table", notes);
+    updateNotesTable();
 }
 
 let notes = [

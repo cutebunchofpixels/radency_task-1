@@ -38,7 +38,5 @@ export function handleArchiveAllNotes(notes) {
         return newNote;
     });
 
-    console.log(newNotes);
-
     setNotes(newNotes);
 }
