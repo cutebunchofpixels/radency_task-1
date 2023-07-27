@@ -1,5 +1,6 @@
 import createIcon from "../utils/createIcon.js";
 import { handleArchiveNote } from "./handlers/archiveNotes.js";
+import { handleRemoveNote } from "./handlers/removeNotes.js";
 
 export default function createNotesTableContent(notes) {
     const body = document.createElement("tbody");
@@ -65,6 +66,9 @@ function createActionsCell(note, notes) {
 
     const removeButton = document.createElement("button");
     removeButton.classList.add("btn", "btn-outline-primary");
+    removeButton.addEventListener("click", () => {
+        handleRemoveNote(note.id, notes);
+    });
     removeButton.append(createIcon("bi", "bi-x"));
 
     actionsWrapper.append(editButton, archiveButton, removeButton);

@@ -1,5 +1,7 @@
 import createIcon from "../utils/createIcon.js";
 import { handleArchiveAllNotes } from "./handlers/archiveNotes.js";
+import { handleArchiveNote } from "./handlers/archiveNotes.js";
+import { handleRemoveAllNotes } from "./handlers/removeNotes.js";
 
 export default function createNotesTableHeading(notes) {
     const heading = document.createElement("thead");
@@ -55,6 +57,7 @@ function createActionsHeading(notes) {
 
     const removeAllButton = document.createElement("button");
     removeAllButton.classList.add("btn", "btn-outline-primary");
+    removeAllButton.addEventListener("click", handleRemoveAllNotes);
     removeAllButton.append(createIcon("bi", "bi-x"));
 
     actionsWrapper.append(archiveAllButton, removeAllButton);
