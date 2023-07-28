@@ -66,7 +66,6 @@ function createActionsCell(note, notes, editFormId) {
     editButton.addEventListener("click", (e) =>
         handleEditClick(e, note, notes, editFormId)
     );
-    editButton.setAttribute("data-edit-note-button", "");
     editButton.append(createIcon("bi", "bi-pencil"));
 
     const archiveButton = document.createElement("button");

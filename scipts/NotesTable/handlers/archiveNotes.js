@@ -30,7 +30,7 @@ export function handleArchiveAllNotes(notes) {
             note.creationDate,
             note.category,
             note.content,
-            !note.isArchived
+            true
         );
 
         return newNote;

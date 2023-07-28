@@ -53,12 +53,14 @@ function createEditActionsCell() {
     submitButton.type = "submit";
     submitButton.setAttribute("form", "edit-note-form");
     const submitIcon = createIcon("bi", "bi-check");
+    submitButton.setAttribute("data-note-edit-action", "");
     submitButton.append(submitIcon);
 
     const discardButton = document.createElement("button");
     discardButton.classList.add("btn", "btn-outline-primary");
     const discardIcon = createIcon("bi", "bi-x");
     discardButton.addEventListener("click", handleDiscardClick);
+    discardButton.setAttribute("data-note-edit-action", "");
     discardButton.append(discardIcon);
 
     actionsWrapper.append(submitButton, discardButton);

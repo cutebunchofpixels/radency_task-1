@@ -17,7 +17,7 @@ export function handleEditClick(e, note, notes, editFormId) {
     row.replaceWith(editRow);
     form.replaceWith(newForm);
 
-    toggleEditButtons(notesTableId);
+    toggleActionButtons(notesTableId);
 }
 
 export function handleDiscardClick() {
@@ -52,11 +52,13 @@ export function handleSubmitEditForm(e, oldNote, notes) {
     }
 }
 
-function toggleEditButtons(tableId) {
+function toggleActionButtons(tableId) {
     const table = document.querySelector(`#${tableId}`);
-    const editButtons = table.querySelectorAll("[data-edit-note-button]");
+    const actionButtons = table.querySelectorAll(
+        "button:not([data-note-edit-action])"
+    );
 
-    for (const button of editButtons) {
+    for (const button of actionButtons) {
         button.disabled = !button.disabled;
     }
 }
