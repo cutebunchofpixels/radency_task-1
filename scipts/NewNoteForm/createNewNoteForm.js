@@ -7,9 +7,6 @@ export default function createNewNoteForm(formId, notes) {
     form.classList.add("row", "g-3", "w-50", "m-auto");
     form.addEventListener("submit", (e) => handleNewNoteFormSubmit(e, notes));
 
-    const formContentWrapper = document.createElement("div");
-    formContentWrapper.classList.add("formContentw");
-
     const nameInput = document.createElement("input");
     nameInput.name = "noteName";
     nameInput.placeholder = "Note name";

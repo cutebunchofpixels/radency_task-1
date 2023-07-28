@@ -14,18 +14,15 @@ export function createNoteEditRow(note, notes) {
     nameTextarea.setAttribute("form", "edit-note-form");
     nameTextarea.classList.add("form-control");
     nameCell.append(nameTextarea);
-    row.append(nameCell);
 
     const createdAt = document.createElement("td");
     createdAt.innerText = note.creationDate;
-    row.append(createdAt);
 
     const selectCell = document.createElement("td");
     const select = createCategorySelect(note);
     select.name = "category";
     select.setAttribute("form", "edit-note-form");
     selectCell.append(select);
-    row.append(selectCell);
 
     const contentCell = document.createElement("td");
     const contentTextarea = document.createElement("textarea");
@@ -35,18 +32,17 @@ export function createNoteEditRow(note, notes) {
     contentTextarea.name = "content";
     contentTextarea.setAttribute("form", "edit-note-form");
     contentCell.append(contentTextarea);
-    row.append(contentCell);
 
     const dates = document.createElement("td");
     dates.innerText = note.dates.join(", ");
-    row.append(dates);
 
-    const actions = createEditActionsCell(note, notes);
-    row.append(actions);
+    const actions = createEditActionsCell();
+
+    row.append(nameCell, createdAt, selectCell, contentCell, dates, actions);
     return row;
 }
 
-function createEditActionsCell(note, notes) {
+function createEditActionsCell() {
     const actions = document.createElement("td");
 
     const actionsWrapper = document.createElement("div");

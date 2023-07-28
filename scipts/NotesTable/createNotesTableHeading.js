@@ -1,6 +1,5 @@
 import createIcon from "../utils/createIcon.js";
 import { handleArchiveAllNotes } from "./handlers/archiveNotes.js";
-import { handleArchiveNote } from "./handlers/archiveNotes.js";
 import { handleRemoveAllNotes } from "./handlers/removeNotes.js";
 
 export default function createNotesTableHeading(notes) {
@@ -18,28 +17,23 @@ function createHeadingRow(notes) {
     const name = document.createElement("th");
     name.innerText = "Name";
     name.classList.add("w-15");
-    row.append(name);
 
     const createdAt = document.createElement("th");
     createdAt.innerText = "Created";
-    row.append(createdAt);
 
     const category = document.createElement("th");
     category.innerText = "Category";
-    row.append(category);
 
     const content = document.createElement("th");
     content.innerText = "Content";
     content.classList.add("w-35");
-    row.append(content);
 
     const dates = document.createElement("th");
     dates.innerText = "Dates";
-    row.append(dates);
 
     const actions = createActionsHeading(notes);
-    row.append(actions);
 
+    row.append(name, createdAt, category, content, dates, actions);
     return row;
 }
 

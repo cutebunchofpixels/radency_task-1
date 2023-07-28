@@ -28,7 +28,6 @@ function createNotesTableRow(note, notes) {
     const categoryIcon = createCategoryIcon(note.category);
     name.innerText = note.name;
     name.insertAdjacentElement("afterbegin", categoryIcon);
-    row.append(name);
 
     const createdAt = document.createElement("td");
     createdAt.innerText = note.creationDate.toLocaleDateString(undefined, {
@@ -36,23 +35,19 @@ function createNotesTableRow(note, notes) {
         month: "long",
         day: "numeric",
     });
-    row.append(createdAt);
 
     const category = document.createElement("td");
     category.innerText = note.category;
-    row.append(category);
 
     const content = document.createElement("td");
     content.innerText = note.content;
-    row.append(content);
 
     const dates = document.createElement("td");
     dates.innerText = note.dates.join(", ");
-    row.append(dates);
 
     const actions = createActionsCell(note, notes);
-    row.append(actions);
 
+    row.append(name, createdAt, category, content, dates, actions);
     return row;
 }
 
