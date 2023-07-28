@@ -18,8 +18,6 @@ export function handleNewNoteFormSubmit(e, notes) {
 
         const newNotes = [newNote, ...notes];
 
-        console.log(newNote);
-
         setNotes(newNotes);
     } catch (error) {
         alert(error.message);

@@ -1,6 +1,8 @@
 import Note from "../../models/Note.js";
+import NotesStatistics from "../../models/NotesStatistics.js";
 import renderNotesTable from "../NotesTable/renderNotesTable.js";
 import renderNewNotesForm from "../NewNoteForm/renderNewNoteForm.js";
+import renderNotesStatstable from "../NotesStatsTable/renderNotesStatsTable.js";
 
 let initialId = 1;
 
@@ -9,7 +11,9 @@ export const categories = ["Task", "Idea", "Random Thought"];
 
 export function setNotes(newNotes) {
     notes = newNotes;
+    updateNewNoteForm();
     updateNotesTable();
+    updateNotesStatsTable();
 }
 
 export function updateNotesTable() {
@@ -21,8 +25,16 @@ export function updateNotesTable() {
     );
 }
 
+export function updateNotesStatsTable() {
+    const stats = categories.map((category) =>
+        NotesStatistics.createFromNotes(category, notes)
+    );
+    renderNotesStatstable("notes-stats-table", stats);
+}
+
 export function updateTables() {
     updateNotesTable();
+    updateNotesStatsTable();
 }
 
 export function setViewvingArchived(value) {
