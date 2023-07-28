@@ -1,4 +1,4 @@
-import createIcon from "../utils/createIcon.js";
+import createIcon, { createCategoryIcon } from "../utils/createIcon.js";
 import { handleArchiveNote } from "./handlers/archiveNotes.js";
 import { handleEditClick } from "./handlers/editNote.js";
 import { handleRemoveNote } from "./handlers/removeNotes.js";
@@ -25,7 +25,9 @@ function createNotesTableRow(note, notes) {
     const row = document.createElement("tr");
 
     const name = document.createElement("td");
+    const categoryIcon = createCategoryIcon(note.category);
     name.innerText = note.name;
+    name.insertAdjacentElement("afterbegin", categoryIcon);
     row.append(name);
 
     const createdAt = document.createElement("td");

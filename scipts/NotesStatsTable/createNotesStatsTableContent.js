@@ -1,3 +1,5 @@
+import { createCategoryIcon } from "../utils/createIcon.js";
+
 export default function createNotesStatsTableContent(stats) {
     const body = document.createElement("tbody");
 
@@ -13,7 +15,9 @@ function createNotesStatsTableRow(statsObject) {
     const row = document.createElement("tr");
 
     const category = document.createElement("td");
+    const categoryIcon = createCategoryIcon(statsObject.category);
     category.innerText = statsObject.category;
+    category.insertAdjacentElement("afterbegin", categoryIcon);
 
     const amountActive = document.createElement("td");
     amountActive.innerText = statsObject.amountActive;

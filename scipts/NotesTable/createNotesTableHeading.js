@@ -17,6 +17,7 @@ function createHeadingRow(notes) {
 
     const name = document.createElement("th");
     name.innerText = "Name";
+    name.classList.add("w-15");
     row.append(name);
 
     const createdAt = document.createElement("th");
@@ -29,7 +30,7 @@ function createHeadingRow(notes) {
 
     const content = document.createElement("th");
     content.innerText = "Content";
-    content.classList.add("w-25");
+    content.classList.add("w-35");
     row.append(content);
 
     const dates = document.createElement("th");
