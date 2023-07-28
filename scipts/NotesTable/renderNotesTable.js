@@ -6,7 +6,8 @@ export default function renderNotesTable(
     navigationId,
     tableId,
     notes,
-    isViewvingArchived
+    isViewvingArchived,
+    editFormId
 ) {
     const table = document.querySelector(`#${tableId}`);
     const navigation = document.querySelector(`#${navigationId}`);
@@ -16,7 +17,7 @@ export default function renderNotesTable(
     newTable.classList.add("table", "table-hover");
 
     const heading = createNotesTableHeading(notes);
-    const body = createNotesTableContent(notes, isViewvingArchived);
+    const body = createNotesTableContent(notes, isViewvingArchived, editFormId);
     const newNavigation = createTableNavigation(
         isViewvingArchived,
         navigationId

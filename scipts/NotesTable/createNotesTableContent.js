@@ -3,7 +3,11 @@ import { handleArchiveNote } from "./handlers/archiveNotes.js";
 import { handleEditClick } from "./handlers/editNote.js";
 import { handleRemoveNote } from "./handlers/removeNotes.js";
 
-export default function createNotesTableContent(notes, isViewvingArchived) {
+export default function createNotesTableContent(
+    notes,
+    isViewvingArchived,
+    editFormId
+) {
     const body = document.createElement("tbody");
 
     let visibleNotes;
@@ -14,14 +18,14 @@ export default function createNotesTableContent(notes, isViewvingArchived) {
     }
 
     for (const note of visibleNotes) {
-        const row = createNotesTableRow(note, notes);
+        const row = createNotesTableRow(note, notes, editFormId);
         body.append(row);
     }
 
     return body;
 }
 
-function createNotesTableRow(note, notes) {
+function createNotesTableRow(note, notes, editFormId) {
     const row = document.createElement("tr");
 
     const name = document.createElement("td");
@@ -45,13 +49,13 @@ function createNotesTableRow(note, notes) {
     const dates = document.createElement("td");
     dates.innerText = note.dates.join(", ");
 
-    const actions = createActionsCell(note, notes);
+    const actions = createActionsCell(note, notes, editFormId);
 
     row.append(name, createdAt, category, content, dates, actions);
     return row;
 }
 
-function createActionsCell(note, notes) {
+function createActionsCell(note, notes, editFormId) {
     const tableData = document.createElement("td");
 
     const actionsWrapper = document.createElement("div");
@@ -60,7 +64,7 @@ function createActionsCell(note, notes) {
     const editButton = document.createElement("button");
     editButton.classList.add("btn", "btn-outline-primary");
     editButton.addEventListener("click", (e) =>
-        handleEditClick(e, note, notes)
+        handleEditClick(e, note, notes, editFormId)
     );
     editButton.setAttribute("data-edit-note-button", "");
     editButton.append(createIcon("bi", "bi-pencil"));

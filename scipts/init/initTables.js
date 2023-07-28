@@ -21,7 +21,8 @@ export function updateNotesTable() {
         "notes-table-navigation",
         "notes-table",
         notes,
-        isViewvingArchived
+        isViewvingArchived,
+        "edit-note-form"
     );
 }
 

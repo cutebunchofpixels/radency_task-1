@@ -6,15 +6,16 @@ import {
 } from "../../init/initTables.js";
 import Note from "../../../models/Note.js";
 
-export function handleEditClick(e, note, notes) {
+export function handleEditClick(e, note, notes, editFormId) {
     const row = e.target.closest("tr");
-    const table = e.target.closest("table");
+    const form = document.querySelector(`#${editFormId}`);
 
     const editRow = createNoteEditRow(note, notes);
-    const editForm = createNoteEditForm(note, notes);
+    const newForm = createNoteEditForm(note, notes);
+    newForm.id = editFormId;
 
     row.replaceWith(editRow);
-    table.insertAdjacentElement("beforebegin", editForm);
+    form.replaceWith(newForm);
 
     toggleEditButtons(notesTableId);
 }

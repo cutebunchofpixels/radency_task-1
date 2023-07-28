@@ -69,7 +69,7 @@ function createEditActionsCell() {
 
 export function createNoteEditForm(note, notes) {
     const form = document.createElement("form");
-    form.id = "edit-note-form";
+
     form.addEventListener("submit", (e) =>
         handleSubmitEditForm(e, note, notes)
     );
